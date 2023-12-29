@@ -2,11 +2,16 @@
 
 ## Introduction
 
+The main purpose for the CPP module in 42 school is to introduce the idea of Object-Oriented Programming.
+
 ## Requirements
 
 ### 1. Compiler
 
-### To use C++98 Standard
+- Compile with `c++` and the flags `-Wall -Werror -Wextra`
+- Should also compile with `-std=c++98`
+
+### 2. C++98 Standard
 
 - C++ standards are set by the International Organization for Standardization (ISO), by the ISO/IEC JTC1/SC22/WG21 committee
 - Defines syntax, semantics and the standard library
@@ -17,6 +22,19 @@
   - C++14: Incremental update on top of C++11, adding features like return type deduction, binary literals, improved cinstexpr support, and various library improvement
   - C++17: Introduced features like structured bindings, if constexpr, inline variables, and several new library components
   - C++20: A major update introducing concepts, coroutines, ranges, calendar, and timezone library, feature test macros etc.
+
+### 3. No Norminette
+
+- Explains itself
+
+### 4. Forbidden Functions
+
+- C++11 functions
+- Boost libraries (peer-reviewed, open source libraries)
+- printf(), alloc(), free() etc
+- `using` and `friend` not allowed
+
+### 5. Avoid Memory Leaks
 
 ## Variables
 
@@ -40,6 +58,87 @@
 - No need to worry about null termination
 
 ## Syntax
+
+### Class
+
+There are 2 primary ways to create an object of a class in C++, namely by using direct declaration or by using the `new` keyword.
+
+| ---            | Declaration      | "new" Keyword       |
+| -------------- | ---------------- | ------------------- |
+| Memory         | Stack            | Heap                |
+| Lifetime       | Limited to scope | Exist until deleted |
+| Performance    | Faster           | Slower              |
+| Access Members | "."              | "->"                |
+
+Direct Declaration:
+
+```C++
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string model;
+
+    Car() {
+        cout << "Car created" << endl;
+    }
+
+    ~Car() {
+        cout << "Car destroyed" << endl;
+    }
+
+    void displayModel() {
+        cout << "Car model: " << model << endl;
+    }
+};
+
+int main() {
+    Car myCar; // Object created on the stack
+    myCar.model = "Toyota Camry";
+    myCar.displayModel();
+
+    // myCar will be automatically destroyed when it goes out of scope
+    return 0;
+}
+
+
+```
+
+```C++
+#include <iostream>
+using namespace std;
+
+class Car {
+public:
+    string model;
+
+    Car() {
+        cout << "Car created on heap" << endl;
+    }
+
+    ~Car() {
+        cout << "Car on heap destroyed" << endl;
+    }
+
+    void displayModel() {
+        cout << "Car model: " << model << endl;
+    }
+};
+
+int main() {
+    Car* myCar = new Car; // Object created on the heap
+    myCar->model = "Honda Civic";
+    myCar->displayModel();
+
+    delete myCar; // It's crucial to delete the object to free memory
+    // myCar is no longer valid after this point
+
+    return 0;
+}
+
+
+```
 
 ### Namespace
 
@@ -299,6 +398,6 @@ std::cout << divide(10, 2);  // Output: 5
   - -> return type
   - {} function body
 
-```
+### `friend` Keyword
 
-```
+- When a class is declared as a friend of another class, all member functions of the friend class can access the private and protected members of the other class
