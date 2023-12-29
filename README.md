@@ -18,6 +18,27 @@
   - C++17: Introduced features like structured bindings, if constexpr, inline variables, and several new library components
   - C++20: A major update introducing concepts, coroutines, ranges, calendar, and timezone library, feature test macros etc.
 
+## Variables
+
+### Strings
+
+- Strings are handled differently in C vs C++
+
+#### A. C-Style Strings
+
+- An array of characters terminated by '\0'
+- Strings are an array of char
+- String functions: strcpy, strlen, strcmp etc
+- Programmer is responsible for managing memory
+
+#### B. C++ std::string
+
+- Comes with the Standard Template Library
+- Dynamic sizing
+- Safe and convenient
+- Member functions such as "append", "replace", "find", "substr" and overloads for operators like "+" for concatenation, "===" for comparisoms etc
+- No need to worry about null termination
+
 ## Syntax
 
 ### Namespace
@@ -54,6 +75,43 @@ int main() {
     return 0;
 }
 
+```
+
+### Templates
+
+- Feature to write generic, type-independant code
+- Known as generic programming
+- Primarily used for creating functions and classes that can operate with any data type
+
+#### A. Function Template
+
+- Define a function without specifying the exact data type of its parameters
+- When the function is called, the compiler automatically generates a version of the function witht the appropriate data types
+
+```C++
+template <typename T>
+T functionName(T parameter) {
+    // Function body
+}
+```
+
+```C++
+template <typename T>
+T max(T x, T y) {
+    return (x > y) ? x : y;
+}
+
+int main() {
+    int i = max(3, 7);             // Instantiates max<int>(int, int)
+    double d = max(6.34, 3.12);    // Instantiates max<double>(double, double)
+}
+
+```
+
+- Explicit Template Arguments
+
+```C++
+double result = max<double>(1, 2.8);
 ```
 
 ### Try-Catch
@@ -108,7 +166,88 @@ int main() {
 
 ```
 
+#### B. Class Templates
+
+- Similar to function templates, but they allow you to define a class that can work with any data type
+
+```C++
+template <typename T>
+class ClassName {
+    // Class body
+};
+```
+
+```C++
+template <typename T>
+class Box {
+public:
+    Box(T value) : value_(value) {}
+
+    T getValue() const { return value_; }
+    void setValue(T value) { value_ = value; }
+
+private:
+    T value_;
+};
+
+int main() {
+    Box<int> intBox(123);
+    Box<double> doubleBox(3.14);
+}
+
+```
+
+#### C. Template Specialization
+
+- Define a specific implementation of a template for a particular data type
+- The below example shows how to use Template Speciaization to delcare a function named max to handle input in generic types, and specifically diffrent implementation to handle C-style strings "const char \*"
+
+```C++
+template <>
+const char* max<const char*>(const char* x, const char* y) {
+    return strcmp(x, y) > 0 ? x : y;
+}
+```
+
+```C++
+#include <iostream>
+#include <cstring>  // For strcmp
+
+// Generic template for max
+template<typename T>
+T max(T x, T y) {
+    return (x > y) ? x : y;
+}
+
+// Template specialization for const char*
+template<>
+const char* max<const char*>(const char* x, const char* y) {
+    return (std::strcmp(x, y) > 0) ? x : y;
+}
+
+int main() {
+    // Using max with int
+    int i = max(3, 7);
+    std::cout << "Max int: " << i << std::endl;
+
+    // Using max with double
+    double d = max(3.5, 2.5);
+    std::cout << "Max double: " << d << std::endl;
+
+    // Using max with const char*
+    const char* s1 = "apple";
+    const char* s2 = "orange";
+    const char* sMax = max(s1, s2);
+    std::cout << "Max string: " << sMax << std::endl;
+
+    return 0;
+}
+
+```
+
 ### "auto" keyword
+
+#### A. Type Inference
 
 - Modern C++ (not available in C++98)
 - Tell the compiler to automatically deduce the type of variable from its initilizer
@@ -123,6 +262,8 @@ std::vector<int> vec;
 auto iter = vec.begin();    // iter is std::vector<int>::iterator
 
 ```
+
+#### B. Trailing Return Type in Functions
 
 ### Lambda Expressions
 
@@ -157,3 +298,7 @@ std::cout << divide(10, 2);  // Output: 5
   - () parameters
   - -> return type
   - {} function body
+
+```
+
+```
