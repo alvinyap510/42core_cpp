@@ -61,6 +61,8 @@ The main purpose for the CPP module in 42 school is to introduce the idea of Obj
 
 ### Class
 
+#### A. Creation
+
 There are 2 primary ways to create an object of a class in C++, namely by using direct declaration or by using the `new` keyword.
 
 | ---            | Declaration      | "new" Keyword       |
@@ -137,8 +139,21 @@ int main() {
     return 0;
 }
 
-
 ```
+
+#### B. Members Accessibility
+
+A. Public
+
+- Can be access in any part of the programme
+
+B. Private
+
+- Members that are only accessible from within the same class, and hidden from outside of the class
+
+C. Protected
+
+- Members that are accessible from within the same class, and also in class derived from the class
 
 ### Namespace
 
