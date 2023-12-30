@@ -1,21 +1,23 @@
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Cat : public Animal
+class Dog : public Animal
 {
 private:
     Brain *brain_;
 
 public:
     // Constructor: Default Without Arguments
-    Cat();
+    Dog();
     // Constructor: copy construction
-    Cat(Cat const &anotherCat);
+    Dog(Dog const &anotherDog);
     // Overloading the "=" operator
-    Cat &operator=(Cat const &anotherCat);
+    Dog &operator=(Dog const &anotherDog);
+    // Create new implementation of destructor
+    ~Dog();
     void makeSound() const;
     Brain *getBrain() const;
 };
