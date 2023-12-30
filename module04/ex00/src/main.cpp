@@ -46,4 +46,7 @@ int main()
     delete animal;
     delete dog;
     delete cat;
+    delete wrongAnimal;
+    delete wrongCatA;
+    delete wrongCatB;
 }
