@@ -13,13 +13,13 @@ protected:
 
 public:
     // Constructor: with argument
-    AMateria(std::string name);
-    // Constructor: Copy Construction
     AMateria(std::string const &type);
+    // Constructor: Copy Construction
+    AMateria(AMateria const &anotherAMateria);
     // Overloading assignment operator "="
     AMateria &operator=(AMateria const &anotherAMateria);
     // Destructor
-    ~AMateria();
+    virtual ~AMateria();
     // Method: getType
     std::string const &getType() const;
     // Method: clone self and return a copy
