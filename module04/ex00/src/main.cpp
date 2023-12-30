@@ -49,4 +49,5 @@ int main()
     delete wrongAnimal;
     delete wrongCatA;
     delete wrongCatB;
+    system("leaks ex00_polymorphism");
 }
