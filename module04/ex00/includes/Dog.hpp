@@ -12,7 +12,7 @@ public:
     Dog(Dog const &anotherDog);
     // Overloading the "=" operator
     Dog &operator=(Dog const &anotherDog);
-    virtual void makeSound() const;
+    void makeSound() const;
 };
 
 #endif

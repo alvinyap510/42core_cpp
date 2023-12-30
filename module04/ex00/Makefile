@@ -2,7 +2,7 @@ NAME		= 	ex00_polymorphism
 SRC			=	src/*.cpp
 INCS		=	includes/
 C++			=	clang++
-CFLAGS		=	-std=c++98 -Wall -Werror -Wextra
+CFLAGS		=	-std=c++98 -Wall -Werror -Wextra -fsanitize=address
 RM			=	rm -f
 
 all:	${NAME}

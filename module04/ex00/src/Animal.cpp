@@ -23,6 +23,7 @@ Animal::Animal(Animal const &blueprint)
 // Overloading the "=" operator
 Animal &Animal::operator=(Animal const &another)
 {
+    std::cout << "Copy assigning " << this->type << std::endl;
     if (this != &another)
     {
         this->type = another.type;
