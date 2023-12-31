@@ -50,6 +50,7 @@ int main()
     std::cout << std::endl;
     me->use(1, *bob);
     std::cout << std::endl;
+
     std::cout << "====== DELETION ======" << std::endl;
     std::cout << std::endl;
     delete bob;
@@ -58,5 +59,7 @@ int main()
     std::cout << std::endl;
     delete src;
     std::cout << std::endl;
+
+    system("leaks ex03_interface_game");
     return 0;
 }
