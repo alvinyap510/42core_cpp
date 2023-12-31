@@ -4,27 +4,28 @@
 AMateria::AMateria(std::string const &type)
 {
     this->_type = type;
-    std::cout << "Constructed AMateria of type " << this->_type << std::endl;
+    std::cout << "Constructed Materia of type " << this->_type << std::endl;
 }
 
 // Constructor: Copy Construction
 AMateria::AMateria(AMateria const &anotherAMateria)
 {
     *this = anotherAMateria;
-    std::cout << "Copy constructed AMateria of type " << this->_type << std::endl;
+    std::cout << "Copy constructed Materia of type " << this->_type << std::endl;
 }
 
 // Overloading assignment operator "="
 AMateria &AMateria::operator=(AMateria const &anotherAMateria)
 {
     this->_type = anotherAMateria._type;
-    std::cout << "Copy assigned AMateria of type " << this->_type << std::endl;
+    std::cout << "Copy assigned Materia of type " << this->_type << std::endl;
+    return *this;
 }
 
 // Destructor
 AMateria::~AMateria()
 {
-    std::cout << "Destructing AMateria of type"
+    std::cout << "Destructing Materia of type "
               << this->_type
               << std::endl;
 }
@@ -37,7 +38,7 @@ std::string const &AMateria::getType() const
 
 void AMateria::use(ICharacter &target)
 {
-    std::cout << "* Applied unkndown AMateria on "
+    std::cout << "* Applied unkndown Materia on "
               << target.getName() << " *"
               << std::endl;
 }

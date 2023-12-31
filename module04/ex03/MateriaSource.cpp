@@ -60,6 +60,11 @@ void MateriaSource::learnMateria(AMateria *m)
         if (!this->materiaMemory[i])
         {
             this->materiaMemory[i] = m;
+            std::cout << "Learned new materia "
+                      << m->getType()
+                      << " at index "
+                      << i
+                      << std::endl;
             return;
         }
     }
@@ -75,7 +80,7 @@ AMateria *MateriaSource::createMateria(std::string const &type)
         {
             std::cout << "Created "
                       << type
-                      << "from MateriaSource" << std::endl;
+                      << " from MateriaSource" << std::endl;
             return this->materiaMemory[i]->clone();
         }
     }
