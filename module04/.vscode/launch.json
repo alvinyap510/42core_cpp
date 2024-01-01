@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/alvinyap510/Desktop/Programming/Learn/42/42core_cpp/module04/ex03",
-      "program": "/Users/alvinyap510/Desktop/Programming/Learn/42/42core_cpp/module04/ex03/build/Debug/outDebug"
+      "cwd": "/Users/alvinyap510/Desktop/Programming/Learn/42/42core_cpp/module04/ex03/src",
+      "program": "/Users/alvinyap510/Desktop/Programming/Learn/42/42core_cpp/module04/ex03/src/build/Debug/outDebug"
     }
   ]
 }
